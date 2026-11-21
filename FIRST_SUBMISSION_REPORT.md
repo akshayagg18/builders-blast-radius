@@ -25,16 +25,41 @@ The optimized selector reduces sample simulated time by 951.114 seconds (86.1%).
 
 ## Official result
 
-Pending repository publication and first practice submission. This section will be
-updated with the exact repository, commit, score, simulated seconds, CPU seconds,
-missed-commit count, rank, and scorer feedback.
+- Repository: <https://github.com/akshayagg18/builders-blast-radius>
+- Submitted commit: `aad38e3e63a5216ba60bf439de38ec8527206db1`
+- Receipt: `BB-B53E1F14`
+- Scorer version: `blast-radius-1`
+- Status: scored and automatically entered in the final as the team's best result
+- Practice score: **733.1 s**
+
+| Run | Simulated seconds | CPU seconds | Missed commits |
+| ---: | ---: | ---: | ---: |
+| 1 | 732.728 | 0.35 | 2 |
+| 2 | 732.728 | 0.36 | 2 |
+| 3 | 732.728 | 0.36 | 2 |
+
+The scorer reported a 29 ms queue wait and no build, protocol, timeout, memory, or
+container failure. The median total is `732.728 + 0.36 = 733.088`, rounded to
+733.1 seconds. The two misses account for exactly 600 seconds, so the selector's
+zero-penalty official workload cost was 132.728 simulated seconds (133.1 seconds
+including median CPU). Builders does not disclose which practice commits were
+missed. The live page did not expose a stable rank in the submission receipt.
+
+The official result is 371.410 seconds (33.6%) faster than the all-tests sample
+baseline despite the penalties, but it is 579.704 seconds slower than the local
+optimized sample result. The difference is evidence that sample-perfect pinned-line
+coverage and sentinels did not generalize safely to two unseen practice changes.
 
 ## Recommendations after first score
 
-1. Treat a score near the zero-miss sample projection as evidence the coverage map
-   generalizes; then reduce over-selection in generic dialect and typing changes.
-2. If the server reports one or more misses, expand sentinels before pruning anything.
-   One avoided miss is worth up to 300 seconds.
-3. Use CPU feedback to confirm gzip/JSON loading is negligible. If not, replace the
-   runtime payload with a compact binary array encoded using only the standard library.
-4. Preserve this exact commit as the conservative final candidate before experimenting.
+1. Expand structural sentinels before pruning anything. One avoided miss is worth
+   300 seconds, while the entire zero-penalty official workload cost only 133.1 seconds.
+2. Remove the assumption that comment-only Python patches are harmless. The official
+   specification explicitly says they are not promised harmless; route them through
+   file- and subsystem-level sentinels.
+3. Add broader fallbacks for newly reachable code paths, import-time effects, and
+   subprocess-executed optimizer paths that pinned-revision line coverage cannot see.
+4. CPU is already negligible at 0.35--0.36 seconds; optimizing map loading cannot
+   materially offset even a small increase in miss risk.
+5. Preserve the submitted commit and receipt as the first-practice ledger entry before
+   experimenting with a more conservative second commit.

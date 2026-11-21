@@ -35,7 +35,11 @@ Misses:    0 (0.000 s of the simulated time)
 
 ## Submission fields
 
-- Repository: filled after public GitHub publication
-- Commit: filled after publication
+- Repository: https://github.com/akshayagg18/builders-blast-radius
+- Commit: `aad38e3e63a5216ba60bf439de38ec8527206db1`
+- Receipt: `BB-B53E1F14`
+- Official practice score: 733.1 s (732.728 s simulated + 0.36 s median
+  CPU; 2 missed commits)
+- Final status: automatically entered as the team's current best
 - Scorer version: `blast-radius-1`
 - Track page: https://www.joinbuilders.org/buildathon/tracks/blast-radius

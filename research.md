@@ -1,6 +1,7 @@
 # Blast Radius research and scoring analysis
 
-Research snapshot: 2026-11-21 09:30 SGT (2026-11-20 20:30 ET).
+Research snapshot: 2026-11-21 09:30--14:38 SGT (2026-11-20 20:30--
+2026-11-21 01:38 ET).
 
 ## Official hackathon rules
 
@@ -34,9 +35,10 @@ Sources: [Buildathon guide and rules](https://www.joinbuilders.org/buildathon),
 
 ### Live status and community scan
 
-- The signed-in track page showed 61 teams. The leading visible practice scores were
-  Vaathi 186.2 s, Tark305 188.5 s, Mustikas 197.2 s, Advanced 200.6 s, and BingBU
-  212.3 s. The official baseline was 1614.1 s.
+- The signed-in track page grew from 61 teams during the initial scan to 176 teams
+  at first submission. At 14:38 SGT, the leading visible practice scores were
+  fortnite pirate token 142.9 s, ND 146.3 s, 67 151.8 s, and SophiaOmri 153.7 s.
+  The official baseline remained 1614.1 s.
 - The only visible organizer announcement was the kickoff greeting, “May the odds
   be ever in your favor”; no scoring-rule change was visible.
 - Focused public GitHub searches for the event name, scorer metric, and sample-kit
@@ -195,3 +197,18 @@ Radius 3 is retained for unseen multiline edits at negligible sample cost. The m
 remaining risk is behavior newly reachable only after an edit: old-version coverage
 cannot observe a path that did not previously execute. Structural sentinels and the
 nearest-executable-line fallback mitigate but cannot prove safety.
+
+## First official practice result
+
+Builders accepted public commit
+`aad38e3e63a5216ba60bf439de38ec8527206db1` under receipt `BB-B53E1F14`.
+All three runs completed and reported the same 732.728 simulated seconds with two
+missed commits; CPU was 0.35, 0.36, and 0.36 seconds. The scored median was 733.1
+seconds and was automatically entered in the final as the team's current best.
+
+Subtracting the two 300-second penalties gives a 132.728-second zero-penalty
+workload cost. Thus, the selector was highly efficient on the tests it chose, but
+coverage safety dominated the score. The official page never reveals which commits
+were missed. The most actionable model correction is to stop treating comment-only
+Python changes as guaranteed harmless and to broaden structural fallbacks for
+newly reachable, import-time, and subprocess behavior before any further pruning.
