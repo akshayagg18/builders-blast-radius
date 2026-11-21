@@ -1,0 +1,13 @@
+experiments/.venv/
+experiments/sqlglot/
+experiments/coverage-contexts.json
+experiments/output.jsonl
+experiments/*-output.jsonl
+experiments/*-stderr.txt
+experiments/radius-*.jsonl
+experiments/sqlglot/.coverage
+__pycache__/
+*.py[cod]
+.pytest_cache/
+blast-radius-sample.tar.gz
+official-SCORING.md

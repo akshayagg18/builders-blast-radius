@@ -1,0 +1,8 @@
+[run]
+branch = false
+source = sqlglot
+dynamic_context = test_function
+
+[report]
+omit =
+    */tests/*
